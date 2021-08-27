@@ -12,7 +12,7 @@ screen = pygame.display.set_mode((width,height))
 images={}
 images["bg"] = pygame.image.load("tower.png").convert_alpha()
 images["ghost"] = pygame.image.load("ghost-standing.png").convert_alpha()
-images["door"] = pygame.image.load("door.png").convert_alpha()
+images["window"] = pygame.image.load("door.png").convert_alpha()
 groundy=-50
 
 score=0
@@ -32,7 +32,7 @@ class Ghost:
         self.rect.x-=20
         
 
-class Door:
+class Window:
    
     def __init__(self,y): 
         self.speed=3
@@ -41,7 +41,7 @@ class Door:
         self.rect2=pygame.Rect(self.gap,y+240,100,5)
         
     def display(self):  
-        screen.blit(images["door"],self.rect1)
+        screen.blit(images["window"],self.rect1)
     
     def move(self):
         self.rect1.y+=self.speed
@@ -57,8 +57,8 @@ class Door:
 state="play"
 ghost= Ghost()
 
-d1=Door(-200) 
-d2=Door(-500)     
+w1=Window(-200) 
+w2=Window(-500)     
 while True:    
     screen.fill((50,150,255))
     screen.blit(images["bg"],[0,groundy])
@@ -71,10 +71,10 @@ while True:
                 ghost.moveLeft()
                
    
-    d1.move()
-    d2.move()
-    d1.display()
-    d2.display()
+    w1.move()
+    w2.move()
+    w1.display()
+    w2.display()
         
     
     ghost.gravity()
